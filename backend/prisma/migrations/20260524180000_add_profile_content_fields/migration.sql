@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "availabilityText" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "focus" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "heroHeadline" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "heroSubtext" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "footerTagline" TEXT;
