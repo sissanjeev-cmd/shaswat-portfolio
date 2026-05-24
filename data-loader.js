@@ -1,7 +1,11 @@
 // data-loader.js — ES module, replaces hardcoded HTML with live API data.
 // Falls back silently if API is unreachable — hardcoded HTML remains visible.
 
-const API = 'http://localhost:3001/api/v1';
+// In production (Vercel), use a relative path — Vercel proxies /api/v1 to Railway.
+// Locally, call the Docker API directly.
+const API = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+  ? 'http://localhost:3001/api/v1'
+  : '/api/v1';
 
 async function fetchJSON(path) {
   try {

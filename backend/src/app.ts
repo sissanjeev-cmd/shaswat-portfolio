@@ -8,13 +8,17 @@ import { router } from './routes';
 export function createApp() {
   const app = express();
 
+  const defaultOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3002',
+    'http://localhost:3000',
+    'http://127.0.0.1:5500',
+  ];
+  const extraOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+    : [];
   app.use(cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:3002',
-      'http://localhost:3000',
-      'http://127.0.0.1:5500',
-    ],
+    origin: [...defaultOrigins, ...extraOrigins],
     credentials: true,
   }));
 
