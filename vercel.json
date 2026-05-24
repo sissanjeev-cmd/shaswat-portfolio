@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/v1/(.*)", "destination": "https://REPLACE_WITH_RAILWAY_URL/api/v1/$1" },
+    { "source": "/api/v1/:path*", "destination": "https://REPLACE_WITH_API_VERCEL_URL/api/v1/:path*" },
     { "source": "/about",      "destination": "/about.html" },
     { "source": "/experience", "destination": "/experience.html" },
     { "source": "/projects",   "destination": "/projects.html" },

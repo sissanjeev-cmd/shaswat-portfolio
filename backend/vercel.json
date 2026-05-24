@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npx prisma generate && npx prisma migrate deploy && npx ts-node --project tsconfig.seed.json prisma/seed.ts",
+  "rewrites": [
+    { "source": "/:path*", "destination": "/api/index" }
+  ]
+}
