@@ -7,12 +7,13 @@ RUN apk add --no-cache openssl libc6-compat
 COPY package*.json ./
 RUN npm ci
 
-COPY tsconfig.json ./
+COPY tsconfig*.json ./
 COPY prisma ./prisma
 COPY src ./src
 
 RUN npx prisma generate
 RUN npm run build
+RUN npx tsc --project tsconfig.seed.json
 
 
 # Runtime
@@ -33,4 +34,4 @@ COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 3001
 
-CMD ["sh","-c","npx prisma generate && npx prisma migrate deploy && node dist/server.js"]
+CMD ["sh","-c","npx prisma generate && npx prisma migrate deploy && node dist/prisma/seed.js && node dist/server.js"]
